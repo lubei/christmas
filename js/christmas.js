@@ -16,8 +16,28 @@ var Christmas=function(){
     var $pageB=$('.page-b');
     var $pageC=$('.page-c');
 
+    var observer = new Observer();
+    new pageA(function(){
+        observer.publish('completePageA');
+    });
+    observer.subscribe('completePageA',function(){
+        changePage($pageA,'effect-out',function(){
+            observer.publish('pageB');
+        })
+    });
+    observer.subscribe('pageB',function(){
+        new pageB(function(){
+            observer.publish('completePageB');
+        })
+    });
+    observer.subscribe('completePageB',function(){
+        changePage($pageC,'effect-in',function(){
+            observer.publish('pageC');
+        })
+    });
+
     //页面切换
-    $('#choose').on('change',function(e){
+    /*$('#choose').on('change',function(e){
         var pageName= e.target.value;
         switch (pageName){
             case 'page-b':
@@ -31,9 +51,46 @@ var Christmas=function(){
                 })
                 break;
         }
-    });
+    });*/
+
+
 };
 
-$(function(){
+
+/**
+ * 背景音乐
+ * @param {[type]} url  [description]
+ * @param {[type]} loop [description]
+ */
+function HTML5Audio(url, loop) {
+    var audio = new Audio(url);
+    audio.autoplay = true;
+    audio.loop = loop || false; //是否循环
+    audio.play();
+    return {
+        end: function(callback) {
+            audio.addEventListener('ended', function() {
+                callback()
+            }, false);
+        }
+    }
+}
+
+
+$(function() {
     Christmas();
+    $("button:first").click(function() {
+        //背景音乐
+        var audio1 = HTML5Audio('music/circulation.mp3');
+        audio1.end(function() {
+            alert("音乐结束")
+        });
+    });
+    $("button:last").click(function() {
+        HTML5Audio('music/scene.mp3', true);
+        //循环播放那
+        // ? url = http://www.imooc.com/upload/media/two.mp3'
+    });
+    
 })
+
