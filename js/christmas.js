@@ -11,12 +11,14 @@ function changePage(element,effect,callback){
  *中间调用
  */
 var Christmas=function(){
-    console.log('c');
     var $pageA=$('.page-a');
     var $pageB=$('.page-b');
     var $pageC=$('.page-c');
 
-    var observer = new Observer();
+    //构建第一个场景页面对象
+    new pageA($pageA);
+
+    /*var observer = new Observer();
     new pageA(function(){
         observer.publish('completePageA');
     });
@@ -34,7 +36,7 @@ var Christmas=function(){
         changePage($pageC,'effect-in',function(){
             observer.publish('pageC');
         })
-    });
+    });*/
 
     //页面切换
     /*$('#choose').on('change',function(e){
@@ -78,7 +80,10 @@ function HTML5Audio(url, loop) {
 
 
 $(function() {
-    Christmas();
+    $("#xueqiao").click(function() {
+        Christmas();
+    });
+    
     $("button:first").click(function() {
         //背景音乐
         var audio1 = HTML5Audio('music/circulation.mp3');
