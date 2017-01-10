@@ -11,9 +11,36 @@ function pageA (element) {
 	this.$root = element;
 	//小男孩
 	this.$boy = element.find(".chs-boy");
+	//窗户
+    this.$window = element.find(".window");    
+    this.$leftWin  = this.$window.find(".window-left")
+    this.$rightWin = this.$window.find(".window-right")
 	//运行动画
 	this.run();
 }
+
+/**
+ * 开窗
+ * @return {[type]} [description]
+ */
+pageA.prototype.openWindow = function(callback) {
+    var count = 1;
+    var complete = function() {
+        ++count
+        if (count === 2) {
+            callback && callback();
+        }
+    }
+    var bind = function(data) {
+        data.one("transitionend webkitTransitionEnd", function(event) {
+            data.removeClass("window-transition")
+            complete()
+        })
+    }
+    bind(this.$leftWin.addClass("window-transition").addClass("hover"))
+    bind(this.$rightWin.addClass("window-transition").addClass("hover"))
+}
+
 
 /**
  * 运行下一个动画
@@ -75,6 +102,9 @@ pageA.prototype.run = function(callback){
     })
     .then(function(){
         that.stopWalk();
+        that.openWindow(function() {
+                alert("窗户已打开")
+            });
     })  
 
 }

@@ -16,7 +16,11 @@ var Christmas=function(){
     var $pageC=$('.page-c');
 
     //构建第一个场景页面对象
-    new pageA($pageA);
+    //new pageA($pageA);
+
+    //构建第二个场景页面对象
+    new pageB($pageB);
+
 
     /*var observer = new Observer();
     new pageA(function(){
