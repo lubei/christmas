@@ -84,6 +84,7 @@ function HTML5Audio(url, loop) {
 
 
 $(function() {
+    Christmas();
     $("#xueqiao").click(function() {
         Christmas();
     });
@@ -95,11 +96,11 @@ $(function() {
             alert("音乐结束")
         });
     });
-    $("button:last").click(function() {
+    /*$("button:last").click(function() {
         HTML5Audio('music/scene.mp3', true);
         //循环播放那
         // ? url = http://www.imooc.com/upload/media/two.mp3'
-    });
+    });*/
     
 })
 

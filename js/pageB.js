@@ -176,6 +176,34 @@ function pageB(element, pageComplete) {
                 })
             })
 
+        });
+
+
+
+    //3d旋转节点
+    var $carousel = element.find("#carousel");
+
+    //旋转木马对象
+    var carousel = new Carousel($carousel, {
+        imgUrls: [
+            "images/carousel/1.png",
+            "images/carousel/2.png",
+            "images/carousel/3.png"
+        ],
+        videoUrls: [
+            "images/carousel/1.mp4",
+            "images/carousel/2.mp4",
+            "images/carousel/3.mp4"
+        ]
+    });
+
+    var i = 0;
+    $("#carouselbtn").on("click", function() {
+    	carousel.run(i++, function() {
+            //播放视频
+            carousel.palyVideo()
         })
+    })
+
 
 }

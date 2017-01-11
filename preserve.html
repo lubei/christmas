@@ -15,14 +15,35 @@
 <body>
     <div id="carousel" style="perspective: 500px; position: absolute; left: 6.8rem; top: 4.5rem;">
         <figure id="spinner" style="width: 4rem; transform-style: preserve-3d;">
-            <figure style="width:4rem;transform:rotateY(0deg) translateZ(2.5rem);position:absolute;"><img src="http://img.imooc.com/5662e29a0001905a14410901.png" style="width:100%;height:100%;"></figure>
-            <figure style="width:4rem;transform: rotateY(120deg) translateZ(2.5rem) scaleY(.9);position:absolute;"><img src="http://img.imooc.com/5662e2960001f16314410901.png" style="width:100%;height:100%;"></figure>
-            <figure style="width:4rem;transform: rotateY(240deg) translateZ(2.5rem) scaleY(.9);position:absolute;"><img src="http://img.imooc.com/5662e26f00010dea14410901.png" style="width:100%;height:100%;"></figure>
+            <figure style="width:4rem;transform:rotateY(0deg) translateZ(2.5rem);position:absolute;"><img src="http://img.mukewang.com/5662e29a0001905a14410901.png" style="width:100%;height:100%;"></figure>
+            <figure style="width:4rem;transform: rotateY(120deg) translateZ(2.5rem) scaleY(.9);position:absolute;"><img src="http://img.mukewang.com/5662e2960001f16314410901.png" style="width:100%;height:100%;"></figure>
+            <figure style="width:4rem;transform: rotateY(240deg) translateZ(2.5rem) scaleY(.9);position:absolute;"><img src="http://img.mukewang.com/5662e26f00010dea14410901.png" style="width:100%;height:100%;"></figure>
         </figure>
     </div>
+    <button>点击旋转</button>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.js"></script>
     <script type="text/javascript">
+
+    var count = 0;
+    var rotate = 120
+    var angle;
+    $("button").on("click", function() {
+        angle = (count++) * rotate + 360;
+        //console.log(angle);
+        $("#spinner")
+            .css({
+                "transform": "rotateY(-" + angle + "deg)",
+                "transition":"1s"
+            })
+            .css({
+                "-moz-transform": "rotateY(-" + angle + "deg)",
+                "-moz-transition":"1s"
+            })
+    })
+
+
     //rem设置
-    (function(doc, win) {
+    ;(function(doc, win) {
         var docEl = doc.documentElement,
             resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
             recalc = function() {
@@ -37,5 +58,3 @@
     })(document, window);
     </script>
 </body>
-
-</html>
