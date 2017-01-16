@@ -30,7 +30,7 @@
     height:100%;
     position: absolute;
     background-image: url('../images/c/page-c-bg.png');
-    z-index: 3;
+    z-index: 50;
 }
 
 /**
@@ -849,3 +849,82 @@
   animation-name: bounceOut;
 }
 
+
+
+/**
+ * 第三幅场景窗户
+ */
+
+.page-c .window {
+    left: 8rem;
+}
+
+.window-left.close,
+.window-right.close {
+    -webkit-animation: closeWindow 2s forwards;
+    -moz-animation: closeWindow 2s forwards;
+}
+
+@-webkit-keyframes closeWindow {
+    100% {
+        -webkit-transform: scale(1) rotateY(0deg) rotateZ(0deg);
+        margin-right: 0;
+        margin-left: 0;
+    }
+}
+
+@-moz-keyframes closeWindow {
+    100% {
+        -moz-transform: scale(1) rotateY(0deg) rotateZ(0deg);
+        margin-right: 0;
+        margin-left: 0;
+    }
+}
+
+
+/**
+ * 场景背景
+ * @type {[type]}
+ */
+
+.window-scene-bg {
+    background: url('../images/c/window-scene-bg.png');
+    background-size: 100% 100%;
+    width: 2.26rem;
+    height: 1.2rem;
+    position: absolute;
+    left: 50%;
+    bottom: .1rem;
+    z-index: -1;
+    margin-left: -1.13rem;
+    -webkit-transform: translateZ(-50px);
+    -moz-transform: translateZ(-50px);
+}
+
+
+/**
+ * 关门背景
+ */
+
+.window-close-bg {
+    background: url('../images/c/window-close-bg.png');
+    background-size: 100% 100%;
+    width: 0.8rem;
+    height: 0.8rem;
+    position: absolute;
+    left: 50%;
+    bottom: .1rem;
+    margin-left: -0.4rem;
+    -webkit-transform: translateZ(-50px);
+    -moz-transform: translateZ(-50px);
+    opacity: 0;
+    z-index: 500;
+}
+
+/*雪花*/
+#snowflake{
+    position:absolute;
+    left:0;
+    top:0;
+    z-index: 999999;
+}

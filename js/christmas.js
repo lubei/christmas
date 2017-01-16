@@ -19,7 +19,14 @@ var Christmas=function(){
     //new pageA($pageA);
 
     //构建第二个场景页面对象
-    new pageB($pageB);
+    //new pageB($pageB);
+
+
+    //页面容器元素
+    var $pageC = $(".page-c");
+    //构建第三个场景页面对象
+    new pageC($pageC);
+
 
 
     /*var observer = new Observer();
@@ -84,7 +91,7 @@ function HTML5Audio(url, loop) {
 
 
 $(function() {
-    Christmas();
+    //Christmas();
     $("#xueqiao").click(function() {
         Christmas();
     });
